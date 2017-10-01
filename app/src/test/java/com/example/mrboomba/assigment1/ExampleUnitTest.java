@@ -1,4 +1,4 @@
-package com.example.mrboomba.mobileapp_hw1;
+package com.example.mrboomba.assigment1;
 
 import org.junit.Test;
 
