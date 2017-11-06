@@ -86,6 +86,7 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:id="@+id/set"
                 android:text="@string/set"/>
 
         </LinearLayout>
@@ -143,10 +144,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/file"
+                android:onClick="onRadioButtonClicked"
                 android:id="@+id/file"/>
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="onRadioButtonClicked"
                 android:text="@string/obj"
                 android:id="@+id/obj"/>
         </RadioGroup>

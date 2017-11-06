@@ -6,6 +6,7 @@ import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -44,9 +45,10 @@ public class MainActivity2 extends AppCompatActivity {
                 BufferedReader inputReader = new BufferedReader(new InputStreamReader(openFileInput(filename)));
                 StringBuffer stringBuffer = new StringBuffer();
                 while ((inputString = inputReader.readLine())!=null){
-                    stringBuffer.append(inputString+"#");
+                    stringBuffer.append(inputString);
                 }
                 String tmp = stringBuffer.toString();
+                Log.d("mrboomba",tmp);
                 String[] output = tmp.split("#");
                 name = output[0];
                 lastname = output[1];
@@ -71,8 +73,8 @@ public class MainActivity2 extends AppCompatActivity {
         ed1.setText(name);
         ed2.setText(lastname);
         ed3.setText(age+"");
-        ed4.setText(intent.getStringExtra("e-mail"));
-        ed5.setText(intent.getStringExtra("phoneNo."));
+        ed4.setText(email);
+        ed5.setText(phone);
         if(age>=0 && age<=15){
             img.setImageDrawable(getDrawable(R.drawable.baby));
         }

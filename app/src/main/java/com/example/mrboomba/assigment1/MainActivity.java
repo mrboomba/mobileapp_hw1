@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -42,12 +43,14 @@ public class MainActivity extends AppCompatActivity {
         ed5 = (EditText) findViewById(R.id.edit5);
         button = (Button) findViewById(R.id.submit);
         sp = (Spinner) findViewById(R.id.spin);
+        set = (Button) findViewById(R.id.set);
         fmtDateAndTime = DateFormat.getDateTimeInstance();
         myCalendar = Calendar.getInstance();
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.postname,android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         sp.setAdapter(adapter);
+
 
         set.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,9 +68,13 @@ public class MainActivity extends AppCompatActivity {
                         Intent intent = new Intent(MainActivity.this, MainActivity2.class);
                         outputStream = openFileOutput(filename,MODE_PRIVATE);
                         outputStream.write(ed1.getText().toString().getBytes());
+                        outputStream.write("#".getBytes());
                         outputStream.write(ed2.getText().toString().getBytes());
-                        outputStream.write(age);
+                        outputStream.write("#".getBytes());
+                        outputStream.write((""+age).getBytes());
+                        outputStream.write("#".getBytes());
                         outputStream.write(ed4.getText().toString().getBytes());
+                        outputStream.write("#".getBytes());
                         outputStream.write(ed5.getText().toString().getBytes());
                         outputStream.close();
                         intent.putExtra("choice",0);
@@ -78,6 +85,7 @@ public class MainActivity extends AppCompatActivity {
                         e.printStackTrace();
                     }catch (Exception e){
                         Toast.makeText(MainActivity.this,"Please Check Input",Toast.LENGTH_SHORT).show();
+                        Log.d("mrboomba",e.toString());
                     }
                 }
                 else if(choice == 1){
